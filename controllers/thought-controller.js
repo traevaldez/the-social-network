@@ -1,17 +1,11 @@
-const { User, Though } = require('../models');
+const { User, Thought } = require('../models');
 
 const thoughtController = {
     // Get all thoughts
     getAllThought(req, res) {
         Thought.find({})
-            .populate({
-                path: 'reactions',
-                select: '-__v'
-            })
             .select('-__v')
-            .sort({ 
-                _id: -1 
-            })
+            .sort({ _id: -1 })
             .then(dbThoughtData => res.json(dbThoughtData))
             .catch(err => {
                 console.log(err);
@@ -22,14 +16,8 @@ const thoughtController = {
     // Get one thought by :id
     getThoughtById({ params }, res) {
         Thought.findOne({ _id: params.id })
-            .populate({
-                path: 'reactions',
-                select: '-__v'
-            })
             .select('-__v')
-            .sort({ 
-                _id: -1 
-            })
+            .sort({ _id: -1 })
             .then(dbThoughtData => {
                 if (!dbThoughtData) {
                     res.status(404).json({ message: 'No thoughts found with that id!' });
@@ -44,12 +32,12 @@ const thoughtController = {
     },
 
     // Create thought
-    createThought({ body }, res) {
+    createThought({ params, body }, res) {
         Thought.create(body)
             .then(({ _id }) => {
                 return User.findOneAndUpdate(
-                    { _id: body.userId },
-                    { $push: { thoughts: _id } },
+                    { _id: params.userId },
+                    { $push: { thought: _id } },
                     { new: true }
                 );
             })
@@ -72,7 +60,7 @@ const thoughtController = {
             body, 
             {
                 new: true,
-                runValidators: true
+                runValidators: false
             })
             .then(dbThoughtData => {
                 if(!dbThoughtData) {
@@ -87,7 +75,7 @@ const thoughtController = {
     // Delete thought by :id
     deleteThought({ params }, res) {
         Thought.findOneAndDelete({
-            _id: params.id
+            _id: params.thoughtId
         })
             .then(dbThoughtData => {
                 if(!dbThoughtData) {
@@ -100,7 +88,7 @@ const thoughtController = {
                     },
                     {
                         $pull: {
-                            thoughts: params.id
+                            thoughts: params.thoughtId
                         }
                     },
                     {
