@@ -21,10 +21,8 @@ const userController = {
                 path: 'thoughts',
                 select: '-__v'
             })
-            .populate({
-                path: 'friends',
-                select: '-__v'
-            })
+            
+
             .then(dbUserData => {
                 if(!dbUserData) {
                     res.status(404).json({ message: 'No user found with this id!' });
@@ -66,20 +64,20 @@ const userController = {
     },
 
     // Delete user and thoughts associated with user account
-    deleteUser({ params }, res) {
-        Thought.deleteMany({ userId: params.id })
-            .then(() => {
-                User.findOneAndDelete({ userId: params.id })
-                    .then(dbUserData => {
-                        if(!dbUserData) {
-                            res.status(404).json({ message: 'No user found with this id!' });
-                            return;
-                        }
-                        res.json(dbUserData);
-                    });
-                })
-                .catch(err => res.json(err));
-    },
+    // deleteUser({ params }, res) {
+    //     Thought.deleteMany({ userId: params.id })
+    //         .then(() => {
+    //             User.findOneAndDelete({ userId: params.id })
+    //                 .then(dbUserData => {
+    //                     if(!dbUserData) {
+    //                         res.status(404).json({ message: 'No user found with this id!' });
+    //                         return;
+    //                     }
+    //                     res.json(dbUserData);
+    //                 });
+    //             })
+    //             .catch(err => res.json(err));
+    // },
 
     // /api/users/:userId/friends/:friendId
     addFriend({ params }, res) {
