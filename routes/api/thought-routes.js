@@ -13,7 +13,7 @@ const {
 // GET all and POST at /api/thoughts
 router
     .route('/')
-    .get(getAllThought)
+    .get(getAllThoughts)
     .post(createThought);
 
 // GET one, PUT, and DELETE at /api/thoughts/:id

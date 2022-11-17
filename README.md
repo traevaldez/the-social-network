@@ -4,6 +4,11 @@
 - [Description](#description)
 - [Deployed Application Video](#deployed-application-video)
 - [Link to GitHub Repository](#link-to-github-repository)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Made With](#made-with)
+- [Created by](#created-by)
+- [Questions](#questions)
 ## Description
 This module's challenge was to build an API for a social network web app where users can share their thoughts, react to their friends' thoughts, and create a friend list using Express.js, a MongoDB database and the Mongoose ODM (Object Oriented Data Model).
 
@@ -15,19 +20,15 @@ This module's challenge was to build an API for a social network web app where u
 
 ## Installation
 - Clone the project from the GitHub Repository
-- Open project in 
 
 ## Usage
-- To use this app, open a mySQL shell to create the database. `source db/db.sql`
-- Create the tables in mySQL. `source db/schema.sql`
-- Fill the table with seed data. `source db/seed.sql`
-- Exit the mySQL shell and start the server using Node.js `npm start` or `node server.js`
-- Use the prompts to view the databases; add new departments, roles and/or employees; update employee roles; 
-
-## Screenshots
+- To use this app, open project in a code editor like VS Code
+- Open a terminal and install dependencies using `npm i`
+- Run server using `npm start` or `nodemon server.js` if using Nodemon
+- Use Insomnia to test API endpoints
 
 ## Made with
-JavaScript, mysql2, Inquirer, console.table, Node.js
+JavaScript, Express.js, Node.js, MongoDB, Mongoose
 
 ## Created by
 Made with ♥ by Trae Valdez // FuneralEmpire, Inc.
