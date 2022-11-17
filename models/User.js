@@ -11,7 +11,7 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-        match: [/.+@.+\..+/]
+        match: /.+@.+..+/
     },
     thoughts: [
         {
@@ -22,7 +22,8 @@ const UserSchema = new Schema({
 },
     {
         toJSON: {
-            virtuals: true
+            virtuals: true,
+            getters: true
         },
         id: false
     }

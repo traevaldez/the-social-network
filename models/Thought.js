@@ -6,12 +6,12 @@ const ReactionSchema = new Schema({
         default: () => new Types.ObjectId()
     },
     reactionBody: {
-        type: String,
+        type: Schema.Types.ObjectId,
         required: true,
-        maxlength: 280
+        maxLength: 280
     },
     username: {
-        type: String,
+        type: Schema.Types.String,
         required: true
     },
     createdAt: {
@@ -43,7 +43,7 @@ const ThoughtSchema = new Schema({
         type: String,
         required: true
     },
-    reactions: [ ReactionSchema ]
+    reactions: [ReactionSchema]
 },
     {
         toJSON: {
