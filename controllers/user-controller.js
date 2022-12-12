@@ -54,10 +54,11 @@ const userController = {
                 res.json(dbUserData);
             })
             .catch(err => res.json(err));
+            console.log(dbUserData)
     },
 
     // Delete user
-    deleteUser({ params }, res) {
+    deleteUser({ params, User }, res) {
         User.findOneAndDelete({ _id: User.id })
             .then(dbUserData => res.json(dbUserData))
             .catch(err => res.json(err));

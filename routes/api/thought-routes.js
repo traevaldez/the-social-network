@@ -7,7 +7,7 @@ const {
     updateThought,
     deleteThought,
     createReaction,
-    deleteReaction
+    deleteReaction,
 } = require('../../controllers/thought-controller');
 
 // GET all and POST at /api/thoughts
